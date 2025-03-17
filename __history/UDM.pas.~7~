@@ -1,0 +1,87 @@
+unit UDM;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Dialogs, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait,
+  Data.DB, FireDAC.Comp.Client, FireDAC.DApt, FireDAC.Comp.DataSet,
+  FireDAC.Phys.SQLite, FireDAC.Phys.SQLiteDef, FireDAC.Stan.ExprFuncs,
+  FireDAC.Phys.SQLiteWrapper.Stat; // Importante incluir estas units
+
+type
+  TDM = class(TDataModule)
+    Connection: TFDConnection;
+    FDPhysSQLiteDriverLink1: TFDPhysSQLiteDriverLink; // Adicione este componente
+    procedure DataModuleCreate(Sender: TObject);
+  private
+    { Private declarations }
+    function TableExists(const TableName: string): Boolean;
+    procedure CreateUserTable;
+  public
+    { Public declarations }
+  end;
+
+var
+  DM: TDM;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+procedure TDM.DataModuleCreate(Sender: TObject);
+begin
+  // Configuração explícita do FireDAC
+  Connection.Params.Clear;
+  Connection.Params.Add('DriverID=SQLite');
+  Connection.Params.Add('Database=' + ExtractFilePath(ParamStr(0)) + 'database.db');
+  Connection.LoginPrompt := False;
+
+  try
+    Connection.Connected := True;
+    // Se for a primeira execução, podemos criar a tabela de usuários
+    if not TableExists('tb_usuario') then
+      CreateUserTable;
+  except
+    on E: Exception do
+      ShowMessage('Erro ao conectar ao banco de dados: ' + E.Message);
+  end;
+end;
+
+function TDM.TableExists(const TableName: string): Boolean;
+var
+  qry: TFDQuery;
+begin
+  qry := TFDQuery.Create(nil);
+  try
+    qry.Connection := Connection;
+    qry.SQL.Text :=
+      'SELECT name FROM sqlite_master WHERE type=''table'' AND name=:table';
+    qry.ParamByName('table').AsString := TableName;
+    qry.Open;
+    Result := not qry.IsEmpty;
+  finally
+    qry.Free;
+  end;
+end;
+
+procedure TDM.CreateUserTable;
+begin
+  Connection.ExecSQL(
+    'CREATE TABLE tb_usuario (' +
+    '  id INTEGER PRIMARY KEY AUTOINCREMENT,' +
+    '  nome VARCHAR(100) NOT NULL,' +
+    '  senha VARCHAR(100) NOT NULL' +
+    ')'
+  );
+
+  // Inserir um usuário padrão para testes
+  Connection.ExecSQL(
+    'INSERT INTO tb_usuario (nome, senha) VALUES (''admin'', ''8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92'')'
+  );
+end;
+
+end.

@@ -1,0 +1,93 @@
+// Unit: UFrmLogin.pas (salvar em /src/view)
+unit UFrmLogin;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls;
+
+type
+  TFrmLogin = class(TForm)
+    pnlMain: TPanel;
+    lblUsuario: TLabel;
+    lblSenha: TLabel;
+    edtUsuario: TEdit;
+    edtSenha: TEdit;
+    btnOk: TBitBtn;
+    btnCancelar: TBitBtn;
+    procedure btnOkClick(Sender: TObject);
+    procedure btnCancelarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+    FAutenticado: Boolean;
+    FIdUsuario: Integer;
+    FNomeUsuario: String;
+  public
+    { Public declarations }
+    property Autenticado: Boolean read FAutenticado;
+    property IdUsuario: Integer read FIdUsuario;
+    property NomeUsuario: String read FNomeUsuario;
+  end;
+
+var
+  FrmLogin: TFrmLogin;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  UUsuarioDAO;
+
+procedure TFrmLogin.btnCancelarClick(Sender: TObject);
+begin
+  FAutenticado := False;
+  ModalResult := mrCancel;
+end;
+
+procedure TFrmLogin.btnOkClick(Sender: TObject);
+var
+  s: String;
+  mensagemErro: String;
+begin
+  if (edtUsuario.Text = '') or (edtSenha.Text = '') then
+  begin
+    ShowMessage('Por favor, preencha todos os campos.');
+    Exit;
+  end;
+
+  // Conforme solicitado, aqui temos a string SQL
+  // Embora na prática estejamos abstraindo isso na classe DAO
+  s := 'SELECT COUNT(*) FROM tb_usuario WHERE ';
+
+  // Verificar se a identificação é numérica ou textual
+  if TryStrToInt(edtUsuario.Text, 0) then
+    s := s + 'id = ' + edtUsuario.Text
+  else
+    s := s + 'nome = ''' + edtUsuario.Text + '''';
+
+  s := s + ' AND senha = (SELECT embaralha(''' + edtSenha.Text + ''') FROM dual)';
+
+  // Agora vamos usar o DAO para autenticar de fato
+  if TUsuarioDAO.Autenticar(edtUsuario.Text, edtSenha.Text, mensagemErro) then
+  begin
+    FAutenticado := True;
+    ModalResult := mrOk;
+  end
+  else
+  begin
+    ShowMessage('Falha na autenticação: ' + mensagemErro);
+    edtSenha.SetFocus;
+    edtSenha.SelectAll;
+  end;
+end;
+
+procedure TFrmLogin.FormCreate(Sender: TObject);
+begin
+  FAutenticado := False;
+  edtSenha.PasswordChar := '*';
+end;
+
+end.

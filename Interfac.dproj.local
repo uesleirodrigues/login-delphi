@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2025/03/17 18:51:04.138,=C:\Projetos\Delphi\Unit1.pas</Transaction>
+    <Transaction>2025/03/17 18:55:31.678,C:\Projetos\Delphi\Interfac\Unit1.pas=C:\Projetos\Delphi\Unit1.pas</Transaction>
+    <Transaction>2025/03/17 18:55:31.678,C:\Projetos\Delphi\Interfac\Unit1.dfm=C:\Projetos\Delphi\Unit1.dfm</Transaction>
+    <Transaction>2025/03/17 18:55:43.773,C:\Projetos\Delphi\Interfac\Interfac.dproj=C:\Projetos\Delphi\Project1.dproj</Transaction>
+    <Transaction>2025/03/17 18:56:35.133,C:\Projetos\Delphi\Interfac\Unit1.pas=</Transaction>
+    <Transaction>2025/03/17 18:56:40.495,=C:\Projetos\Delphi\Interfac\Unit2.pas</Transaction>
+    <Transaction>2025/03/17 18:57:02.258,C:\Projetos\Delphi\Interfac\src\model\UUsuario.pas=C:\Projetos\Delphi\Interfac\Unit2.pas</Transaction>
+    <Transaction>2025/03/17 18:57:02.258,C:\Projetos\Delphi\Interfac\src\model\UUsuario.dfm=C:\Projetos\Delphi\Interfac\Unit2.dfm</Transaction>
+    <Transaction>2025/03/17 18:57:47.887,C:\Projetos\Delphi\Interfac\src\model\UUsuario.pas=</Transaction>
+    <Transaction>2025/03/17 18:58:01.488,=C:\Projetos\Delphi\Interfac\Unit1.pas</Transaction>
+    <Transaction>2025/03/17 18:58:17.411,C:\Projetos\Delphi\Interfac\UUsuario.pas=C:\Projetos\Delphi\Interfac\Unit1.pas</Transaction>
+    <Transaction>2025/03/17 18:58:29.036,C:\Projetos\Delphi\Interfac\src\model\UUsuario.pas=C:\Projetos\Delphi\Interfac\UUsuario.pas</Transaction>
+    <Transaction>2025/03/17 18:58:55.747,=C:\Projetos\Delphi\Interfac\Unit1.pas</Transaction>
+    <Transaction>2025/03/17 18:59:14.420,C:\Projetos\Delphi\Interfac\src\utils\UCriptografia.pas=C:\Projetos\Delphi\Interfac\Unit1.pas</Transaction>
+    <Transaction>2025/03/17 18:59:45.338,=C:\Projetos\Delphi\Interfac\Unit1.pas</Transaction>
+    <Transaction>2025/03/17 19:00:12.238,C:\Projetos\Delphi\Interfac\src\dao\UUsuarioDAO.pas=C:\Projetos\Delphi\Interfac\Unit1.pas</Transaction>
+    <Transaction>2025/03/17 19:02:38.687,=C:\Projetos\Delphi\Interfac\Unit1.pas</Transaction>
+    <Transaction>2025/03/17 19:02:47.801,C:\Projetos\Delphi\Interfac\UDM.dfm=C:\Projetos\Delphi\Interfac\Unit1.dfm</Transaction>
+    <Transaction>2025/03/17 19:02:47.801,C:\Projetos\Delphi\Interfac\UDM.pas=C:\Projetos\Delphi\Interfac\Unit1.pas</Transaction>
+    <Transaction>2025/03/17 19:05:49.514,=C:\Projetos\Delphi\Interfac\Unit1.pas</Transaction>
+    <Transaction>2025/03/17 19:06:17.281,C:\Projetos\Delphi\Interfac\src\view\UFrmLogin.pas=C:\Projetos\Delphi\Interfac\Unit1.pas</Transaction>
+    <Transaction>2025/03/17 19:06:17.281,C:\Projetos\Delphi\Interfac\src\view\UFrmLogin.dfm=C:\Projetos\Delphi\Interfac\Unit1.dfm</Transaction>
+    <Transaction>2025/03/17 19:22:41.170,=C:\Projetos\Delphi\Interfac\Unit1.pas</Transaction>
+    <Transaction>2025/03/17 19:23:17.248,C:\Projetos\Delphi\Interfac\uFormPrincipal.dfm=C:\Projetos\Delphi\Interfac\Unit1.dfm</Transaction>
+    <Transaction>2025/03/17 19:23:17.248,C:\Projetos\Delphi\Interfac\uFormPrincipal.pas=C:\Projetos\Delphi\Interfac\Unit1.pas</Transaction>
+    <Transaction>2025/03/17 19:24:07.592,C:\Projetos\Delphi\Interfac\uFrmPrincipal.pas=C:\Projetos\Delphi\Interfac\uFormPrincipal.pas</Transaction>
+    <Transaction>2025/03/17 19:24:07.592,C:\Projetos\Delphi\Interfac\uFrmPrincipal.dfm=C:\Projetos\Delphi\Interfac\uFormPrincipal.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

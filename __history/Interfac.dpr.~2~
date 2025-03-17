@@ -1,0 +1,19 @@
+program Interfac;
+
+uses
+  Vcl.Forms,
+  UUsuario in 'src\model\UUsuario.pas',
+  UCriptografia in 'src\utils\UCriptografia.pas',
+  UUsuarioDAO in 'src\dao\UUsuarioDAO.pas',
+  UDM in 'UDM.pas' {DataModule1: TDataModule},
+  UFrmLogin in 'src\view\UFrmLogin.pas' {FrmLogin};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TDM, DM);
+  Application.CreateForm(TFrmLogin, FrmLogin);
+  Application.Run;
+end.
